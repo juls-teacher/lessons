@@ -10,11 +10,11 @@ for index, lst  in my_dict.items():
         else:
             break
 
-all_elements=my_dict[0]+my_dict[1]+my_dict[2]
+all_elements=set(my_dict[0]+my_dict[1]+my_dict[2])
 new_list=[]
 for element in all_elements:
     #элементы которого есть в первых двух списках, но отсутствуют в третьем
-    if element in my_dict[0] and element in my_dict[1] and element in my_dict[2]:
+    if element in my_dict[0] and element in my_dict[1] and element not in my_dict[2]:
         new_list.append(element)
 
 print(new_list)
