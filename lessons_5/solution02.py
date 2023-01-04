@@ -3,8 +3,3 @@
 должна используя список имен участников выдать на выходе пары, кто и кому будет дарить, причем сам себе человек не
 может подарить, дубликаты тоже не допустимы."""
 import random
-colleagues = ['A', 'B', 'C', 'D','E', 'F', 'G']
-random.shuffle(colleagues)
-offset = [colleagues[-1]] + colleagues[:-1]
-for santa, receiver in zip(colleagues, offset):
-     print(santa, "buys for", receiver)
