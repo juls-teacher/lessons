@@ -11,9 +11,10 @@ def my_func(**kwargs):
        print(key, value)
 my_func(a=5, b=7, c=15)"""
 
-def three_args(var1, var2, var3):
-   dict= locals()
-   print(*(f'{key} = {value}' for key, value in dict.items() if value)) #распаковываем элементы словаря ,если они не none
-
-three_args(None,None,256)
-
+def three_args(**kwargs):
+   list=[]
+   for key,value in kwargs.items():
+      if value is not None:
+         list.append(f"{key}={value}")
+   print(*list)
+three_args(var1=None,var2= None,var3=256)
