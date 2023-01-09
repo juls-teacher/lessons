@@ -5,8 +5,8 @@
 f_class= int(input())
 s_class=int(input())
 th_class=int(input())
-count= (f_class+s_class+th_class) //2
-if count %2 >0:
-    count=1+count
-print("нужно закупить парт :  ",count)
+
+print ((f_class// 2 + f_class % 2) + ( s_class// 2 + s_class % 2) + (th_class// 2 + th_class % 2))
+
+
 
