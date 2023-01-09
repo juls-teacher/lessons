@@ -8,5 +8,5 @@ th_class=int(input())
 count= (f_class+s_class+th_class) //2
 if count %2 ==0:
     count=1+count
-print(count)
+print("нужно закупить парт :  ",count)
 
