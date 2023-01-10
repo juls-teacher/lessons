@@ -12,20 +12,20 @@ with open("city.csv", "r") as file:
    }
 
 
-def eng_to_rus(word):
+def city_to_country(word):
     return dictionary.get(word, "ERROR")
 
 
-def rus_to_eng(word):
+def country_to_city(word):
     return {
         value:key
         for key ,value in dictionary.items()
     }.get(word, "ERROR")
 
-def rus_to_eng_2(word):
+def country_to_city_2(word):
     for country,city in dictionary.items():
         if city == word:
             return country
 
 a=input ("введите город : ")
-print(rus_to_eng_2(a))
+print(country_to_city_2(a))
