@@ -7,7 +7,7 @@ import csv
 with open("city.csv", "r") as file:
    reader = csv.reader(file)
    dictionary={
-       row[0]:row[1]
+       row[0]:row[2]
        for row in reader
    }
 
