@@ -2,28 +2,31 @@
  уменьшение скорости (скорость -5), стоп (сброс скорости на 0), отображение скорости, задний ход (изменение знака скорости)."""
 
 class Car():
-    model= None
-    speed = 0
-    year=None
-    brand =None
+    model = None
+    speed = None
+    year = None
+    brand = None
 
-    def __init__(self,model,speed,year,brand):
-        self.model,self.speed, self.year, self.brand = model,speed,year,brand
+    def __init__(self,model, year,brand,speed=0):
+        self.model,self.year, self.brand, self.speed = model,year,brand , speed
 
     def high_speed(self):
-        self.speed=self.speed+5
+        self.speed = self.speed + 5
+        return self.speed
 
     def less_speed(self):
-        self.speed = self.speed -5
+        self.speed = self.speed - 5
+        return  self.speed
 
     def stop_speed(self):
-        self.speed=0
+        self.speed = 0
+        return self.speed
 
     def show_speed(self):
-        print ("текущая скорость: " +self.speed)
+        print(f'текущая скорость: {self.speed}')
 
     def reverse_speed(self):
-        self.speed=-1* self.speed
+        self.speed = -1 * self.speed
+        return self.speed
 
-#if __name__ == "__main__":
 
