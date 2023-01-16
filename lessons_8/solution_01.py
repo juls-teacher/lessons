@@ -12,21 +12,21 @@ class Car():
 
     def high_speed(self):
         self.speed = self.speed + 5
-        return self.speed
+
 
     def less_speed(self):
         self.speed = self.speed - 5
-        return  self.speed
+
 
     def stop_speed(self):
         self.speed = 0
-        return self.speed
+
 
     def show_speed(self):
-        print(f'текущая скорость: {self.speed}')
+        print(f'скорость: {self.speed}')
 
     def reverse_speed(self):
         self.speed = -1 * self.speed
-        return self.speed
+
 
 
