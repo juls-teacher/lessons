@@ -9,7 +9,9 @@ if __name__=="__main__":
     car = Car("E500", "2000"," Mercedes")
     while car.speed < 100:
         car.high_speed()
-    car.show_speed()
+        car.show_speed()
+
+
 
 
 
