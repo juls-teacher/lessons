@@ -62,13 +62,19 @@ class MyDateTime(MyTime):
     def __eq__(self, other) -> bool:
         return self.timestamp2 == other.timestamp2
 
-    def __add__(self, other) -> int:
+    def __add__(self, other) ->int:
         timestamp2 = self.timestamp2 + other.timestamp2
         day = timestamp2
-        month = timestamp2 // 30
+        month = timestamp2
         year = timestamp2 // 365
 
         return MyDateTime(day,month,year)
+
+    def __str__(self):
+        return f'MyDateTime {self.day}:{self.month}:{self.year}'
+
+    def __repr__(self):
+        return f'MyDateTime{self.day}:{self.month}:{self.year}'
 
 
 

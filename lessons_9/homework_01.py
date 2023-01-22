@@ -64,20 +64,19 @@ class Triangle(Figure) :
 
     def area(self):
         self.p = (self.ab + self.bc + self.ca)/2
-        return  (self.p*(self.p-self.ab)*(self.p-self.bc)*(self.p-self.ca) )** (1/2)
+        return(self.p*(self.p-self.ab)*(self.p-self.bc)*(self.p-self.ca)) ** (1/2)
 
 
 
-
-O = Circle(0, 0, 3)  # объект класса круг
+O = Circle(0, 0, 3)  # объект класса circle
 print(O.area())
 print(O.perimeter())
 
-P = Square(2,0,9,4) # объект класса прямоугольник
+P = Square(2,0,9,4) # объект класса square
 print(P.area())
 print(P.perimeter())
 
-T = Triangle(0,0,0,6,5,0)
+T = Triangle(0,0,0,6,5,0) # объект класса triangle
 print(T.area())
 print(T.perimeter())
 
