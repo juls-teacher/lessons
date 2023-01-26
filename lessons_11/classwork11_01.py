@@ -1,10 +1,3 @@
-"""Установить библиотеку sqlite3 в операционную систему.
-Используя консоль, создать базу sqlite3, в ней создать таблицу пользователей, добавить новую запись, прочитать её и удалить. Подключить базу в PyCharm.
-Создать python функцию, которая создает таблицу user, для примера использовать слайд №12. Запустить функцию и проверить, что создался файл базы данных.
-Создать функцию, которая позволяет добавлять данные в таблицу user. Добавить 5 различных записей.
-Создать функцию для поиска всех пользователей с определенным именем. Запустить функцию и найти хотя бы одного пользователя по имени.
-Создать функцию для поиска всех пользователей в возрасте от X до Y лет."""
-
 
 import sqlite3
 
@@ -34,7 +27,7 @@ def select_user(firstname: str):
        session.commit()
        return cursor.fetchone()
 
-def select_user_age(age:int):
+def select_user_age():
 
    with sqlite3.connect("my_database.sqlite3") as session:
        cursor = session.cursor()
@@ -42,14 +35,13 @@ def select_user_age(age:int):
            """
            SELECT *
            FROM user
-           WHERE ((age> 20) = ? , (age <30 )=  ?);
-           """,
-           (age,)
+           WHERE age BETWEEN 20 AND 30;
+           """
        )
        session.commit()
-       return cursor.fetchone()
+       return cursor.fetchall()
 
-if __name__ == "__main__":
+if __name__== "main":
     create_user("Alexander", "Chaika", "manti.by@gmail.com", "TestPass", 36)
     create_user("Anton", "Golub", "birds@gmail.com", "TestPass", 30)
     create_user("Dima", "Ivanov", "ivanov_dima@gmail.com", "TestPass", 23)
@@ -57,12 +49,14 @@ if __name__ == "__main__":
     create_user("Viktor", "Petrov", "petrov@gmail.com", "TestPass", 13)
 
 
-
-
-
-result = select_user("Dima")
-print(result)
+res = select_user("Dima")
+print(res)
 print("-----------------------------")
-result_age = select_user_age()
-print(result_age)
+
+result = select_user_age()
+
+for row in result:
+
+    print("Age: ", row)
+    print("*"*40)
 
