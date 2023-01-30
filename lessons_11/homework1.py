@@ -27,10 +27,13 @@ def show_products():
     session.commit()
     return cursor.fetchall()
 
-def delete_product_by_id(id :int):
+
+
+def delete_product_by_id():
+    id_input = int(input('Введите id записи для удаления: '))
     with    sqlite3.connect("products.sqlite3") as session:
         cursor = session.cursor()
-        cursor.execute(" DELETE FROM shop  WHERE id =? ; ", (id))
+        cursor.execute(" DELETE FROM shop  WHERE id =? ; ", (id_input,))
     session.commit()
     return cursor.fetchall()
 
@@ -44,7 +47,7 @@ create_product("coffee machine", 120,80, "Tassimo ")
 all = show_products()
 print('\n'.join(map(str,all)))
 
-del_pr = delete_product_by_id(124)
+del_pr = delete_product_by_id()
 print(del_pr)
 
 
