@@ -28,6 +28,15 @@ def show_products():
     return cursor.fetchall()
 
 
+def update_product():
+    id_input = int(input('Введите id записи для обновления: '))
+    with    sqlite3.connect("products.sqlite3") as session:
+        cursor = session.cursor()
+        cursor.execute(" UPDATE shop SET comment = 'available'  WHERE id =? ; ", (id_input,))
+    session.commit()
+    return cursor.fetchall()
+
+
 
 def delete_product_by_id():
     id_input = int(input('Введите id записи для удаления: '))
@@ -51,3 +60,4 @@ del_pr = delete_product_by_id()
 print(del_pr)
 
 
+print(update_product())
