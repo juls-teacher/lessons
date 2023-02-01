@@ -15,6 +15,9 @@ class User(Base):
     addresses = relationship("Address", back_populates="user")
     purchases = relationship("Purchase", back_populates="user")
 
+    def __str__(self):
+        return f"User #{self.email}"
+
 
 class Profile(Base):
     __tablename__ = "profile"
@@ -25,6 +28,8 @@ class Profile(Base):
     user_id = Column(Integer, ForeignKey("user.id"))
     user = relationship("User", back_populates="profile", uselist=False)
 
+    def __str__(self):
+        return f"Profile #{self.id}"
 
 class Address(Base):
     __tablename__ = "address"
@@ -34,6 +39,9 @@ class Address(Base):
 
     user_id = Column(Integer, ForeignKey("user.id"))
     user = relationship("User", back_populates="addresses", uselist=False)
+
+    def __str__(self):
+        return f"Address #{self.id}"
 
 
 class Purchase(Base):
