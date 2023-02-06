@@ -50,9 +50,11 @@ class Purchase(Base):
     user_id = Column(ForeignKey("user.id"), primary_key=True)
     product_id = Column(ForeignKey("product.id"), primary_key=True)
     count = Column(Integer)
-
     user = relationship("User", back_populates="purchases", uselist=False)
     product = relationship("Product", back_populates="purchases", uselist=False)
+
+    def __str__(self):
+        return f'Purchase {self.id}, {self.count}'
 
 
 class Product(Base):
@@ -60,5 +62,10 @@ class Product(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     price = Column(Float)
+    count =Column(Integer)
+    comment = Column(String)
 
     purchases = relationship("Purchase", back_populates="product")
+
+    def __str__(self):
+        return f'Product {self.id}, {self.name}, {self.price}, {self.count}, {self.comment}'
