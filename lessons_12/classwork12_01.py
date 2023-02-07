@@ -18,7 +18,6 @@ if __name__ == "__main__":
     if not database_exists(engine.url):
         create_database(engine.url)
 
-
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -48,11 +47,11 @@ if __name__ == "__main__":
         profile = Profile(phone='+375251111115', age='30', user_id=user.id)
         session.add(profile)
 
-        address = Address(city='Minsk', address='ul. Sovetskaya 23', user_id=275)
+        address = Address(city='Minsk', address='ul. Sovetskaya 23', user_id=user.id)
         session.add(address)
-        address = Address(city='Brest', address='ul. Pervomayskaya 14', user_id=276)
+        address = Address(city='Brest', address='ul. Pervomayskaya 14', user_id=user.id)
         session.add(address)
-        address = Address(city='Minsk', address='ul. Minskaya 4', user_id=277)
+        address = Address(city='Minsk', address='ul. Minskaya 4', user_id=user.id)
         session.add(address)
         address = Address(city='Mogilev', address='ul. Gurskogo 7 ', user_id=user.id)
         session.add(address)
@@ -63,7 +62,7 @@ if __name__ == "__main__":
 
 #Создать функции для добавления нового и обновления существующего адреса пользователя.
     def update_address():
-        address = Address(city='New York', address='test', user_id=277)
+        address = Address(city='New York', address='test', user_id=user.id)
         session.add(address)
         session.commit()
         session.query(Address).filter_by(city='Gomel').update({"city": "Gomel !!!!!"})
@@ -115,10 +114,9 @@ if __name__ == "__main__":
 
     def create_product():
         product = Product(name=input('Введите название продукта '), price=float(input('Введите цену ')),
-                          count=int(input('Введите количество ')), comment=input('Введите комментарий '))
+                        count=int(input('Введите количество ')), comment=input('Введите комментарий '))
         session.add(product)
         session.commit()
-
 
     def read_product():
         result = session.query(Product).filter(Product.name == input('Введите название продукта '))
@@ -142,29 +140,23 @@ if __name__ == "__main__":
         session.commit()
 
 
-    def buy_product():
-        # product_id = session.query(Product.id).filter(Product.name == input('Введите название продукта' ))
-        # user_id = session.query(User.id).filter(User.email == input('Введите почту'))
-        purchase = Purchase(user_id=4, product_id=4, count='1')
-        session.add(purchase)
-        session.commit()
 
 
-    #
+
     # add_user()
     # update_address()
     # search_age()
-
+    #
     # create_user()
     # update_address2()
     # add_address()
     # find_user()
-
+    #
     create_product()
-    #read_product()
+    # read_product()
     # update_product()
     # delete_product()
-    #buy_product()
+    # buy_product()
 
 
 

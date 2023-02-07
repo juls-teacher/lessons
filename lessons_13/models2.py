@@ -1,3 +1,4 @@
+
 from sqlalchemy import Integer, String, Column, ForeignKey, Float
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
@@ -48,7 +49,7 @@ class Purchase(Base):
     __tablename__ = "purchase"
     id = Column(Integer, primary_key=True)
     user_id = Column(ForeignKey("user.id"))
-    product_id = Column(ForeignKey("product.id"))  # drop table to do
+    product_id = Column(ForeignKey("product.id"))
     count = Column(Integer)
     user = relationship("User", back_populates="purchases", uselist=False)
     product = relationship("Product", back_populates="purchases", uselist=False)
