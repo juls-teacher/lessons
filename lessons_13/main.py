@@ -30,11 +30,7 @@ if __name__ == "__main__":
         5.Ввывод всех товаров, купленных определенным пользователем (only one!!)
         6 .Удалить продукт
         7. Обновить продукт
-        
-        
-        
-        
-        
+         
         
         8. EXIT
         """
@@ -71,10 +67,11 @@ if __name__ == "__main__":
             purchase = add_purchase (session,user_id,product_id,count)
             logger.info(f'покупка   {purchase.id} создана ')
 
-        if choice =="5":
+        if choice =="5":   # only one purchase ?
             email = input('Введите email пользователя ')
             purchase = search_purchases_by_user(session, email)
-            logger.info (f'{purchase.user.email}, {purchase.product.name}, количество {purchase.count}')
+            for i in purchase:
+                logger.info(f'{i.user.email}, {i.product.name}, количество {i.count}')
 
         if choice == "6":
             product_id = input('Введите ID продукта ')

@@ -43,20 +43,34 @@ def update_product(session,product_id, name, price,count, comment):
      session.commit()
 
 
-def search_purchases_by_user(session, email):
+def search_purchases_by_user(session, email): # doesnt work
     user_id = session.query(User.id).filter(User.email == email)
-    result = session.query(Purchase).filter(Purchase.user_id == user_id)
-    for it in result:
-        return it
+    purchase = session.query(Purchase).filter(Purchase.user_id == user_id).all()
+    return purchase
 
 
 
-def search_product_by_user(session,user_id):
 
-    session.query(Purchase).filter(Purchase.user_id == user_id)
-    user_id = session.query(User.id).filter(User.email == email)
-    result = session.query(Purchase).filter(Purchase.user_id == user_id).first()
-    return result
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def search_product_by_user(session,user_id):
+#
+#     session.query(Purchase).filter(Purchase.user_id == user_id)
+#     user_id = session.query(User.id).filter(User.email == email)
+#     result = session.query(Purchase).filter(Purchase.user_id == user_id).first()
+#     return result
 
 
 
@@ -64,6 +78,4 @@ def search_product_by_user(session,user_id):
 # Добавить функцию вывода всех товаров, купленных определенным пользователем.
 # Добавить функцию вывода всех пользователей, которые покупали определенный товар.
 # Добавить фильтрацию пользователей по купленным товарам.
-
-
 
