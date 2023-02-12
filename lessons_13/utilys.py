@@ -51,28 +51,12 @@ def search_purchases_by_user(session, email): # doesnt work
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# def search_product_by_user(session,user_id):
-#
-#     session.query(Purchase).filter(Purchase.user_id == user_id)
-#     user_id = session.query(User.id).filter(User.email == email)
-#     result = session.query(Purchase).filter(Purchase.user_id == user_id).first()
-#     return result
-
-
+def search_product_by_user(session,product_id): # Добавить функцию вывода всех пользователей, которые покупали определенный товар. (many to many)
+    purchases = session.query(Purchase).filter_by(product_id=product_id)
+    user_ids = []
+    for purchase in purchases:
+        user_ids.addend(purchase.user_id)
+    return list(set(purchase.user_ids))
 
 
 # Добавить функцию вывода всех товаров, купленных определенным пользователем.

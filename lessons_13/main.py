@@ -5,8 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy_utils import create_database, database_exists
 from lessons_12.models import Base, User, Profile, Address, Product, Purchase
 from lessons_13.utilys import create_tables
-from lessons_13.utilys import create_user, create_product,find_user, add_purchase, search_purchases_by_user, delete_product,update_product
-
+from lessons_13.utilys import create_user, create_product,find_user, add_purchase, search_purchases_by_user, delete_product,update_product,search_product_by_user
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -27,12 +26,13 @@ if __name__ == "__main__":
         2. Найти пользователя
         3. Добавить товар
         4. Добавить покупку
-        5.Ввывод всех товаров, купленных определенным пользователем (only one!!)
+        5.Ввывод всех товаров, купленных определенным пользователем 
         6 .Удалить продукт
         7. Обновить продукт
+        8.
          
         
-        8. EXIT
+        9. EXIT
         """
 
     while True:
@@ -87,5 +87,16 @@ if __name__ == "__main__":
             update_product(session, product_id, name, price, count, comment)
             logger.info(f'Продукт #{product_id} update ')
 
-        elif choice == "8":
+        if choice == "8":   # Добавить функцию вывода всех пользователей, которые покупали определенный товар.
+            result = search_product_by_user(session, 2)
+            print (result)
+
+
+
+
+
+
+
+
+        elif choice == "9":
             exit()
