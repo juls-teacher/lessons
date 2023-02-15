@@ -19,6 +19,11 @@ class User(Base):
     def __str__(self):
         return f"User #{self.email}"
 
+    def as_dict(self):
+          return{
+               "id":self.id,
+                "email":self.email
+          }
 
 class Profile(Base):
     __tablename__ = "profile"
@@ -43,6 +48,7 @@ class Address(Base):
 
     def __str__(self):
         return f"Address #{self.id}"
+
 
 
 class Purchase(Base):
