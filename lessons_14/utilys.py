@@ -53,7 +53,6 @@ def search_purchases_by_user(session, email): # doesnt work
 
 
 
-
 def search_product_by_user(session,product_id): # Добавить функцию вывода всех пользователей, которые покупали определенный товар. (many to many)
     purchases = session.query(Purchase).filter_by(product_id=product_id)
     user_ids = []
@@ -65,3 +64,14 @@ def get_users(session):
     users= session.querty(User).all()
     return [u.as_dict() for u in users]
 
+def buy_product(session, email, product, count):
+    user_id = session.query(User.id).filter(User.email == email)
+    product_id = session.query(Product.id).filter(Product.name == product)
+    purchase = Purchase(user_id=user_id, product_id=product_id, count=count)
+    session.add(purchase)
+    session.commit()
+
+def find_purchase(session, email):
+    user_id = session.query(User.id).filter(User.email == email)
+    result = session.query(Purchase).filter(Purchase.user_id == user_id).first()
+    return result
